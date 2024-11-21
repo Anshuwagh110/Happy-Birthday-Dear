@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wish</title>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: black;
+            color: white;
+        }
+        
+    <!-- All divs -->
+        
+        #div1, #div2, #div3 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            display: none; /* Initially hide all divs */
+        }
+        
+    <!-- div1 -->
+        
+        #div1 {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            z-index: 1;
+        }
+        
+        #h2{
+            position: absolute;
+            top: 45%;
+            left: 36.5%;
+            transform: translate(-50%, -50%);
+            animation: name1 180s 0s linear infinite;
+        }
+        
+        /* Animation for happy */
+        
+        @keyframes name1{
+            0%{
+                left: -50%;
+            }
+            
+            1%{
+                left: 35.5%;
+            }
+            
+            2%{
+                left: 35.5%;
+            }
+            
+            2.5%{
+                left: -50%;
+            }
+        }
+        
+        #h22{
+            position: absolute;
+            top: 45%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            animation: name2 180s 0s linear infinite; 
+        }
+        
+        /* Animation for birthday */
+        
+        @keyframes name2{
+            0%{
+                left: 150%
+            }
+            
+            1%{
+                left: 62%;
+            }
+            
+            2%{
+                left: 62%            
+            }
+            
+            2.5%{
+               left: 150%;
+            }
+        }
+        
+        #h222{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: name3 180s 0s linear infinite;
+        }
+        
+        /* Animation for darling */
+        
+        @keyframes name3{
+            0%{
+                top: 150%;
+            }
+            
+            1%{
+                top: 50%;
+            }
+            
+            2%{
+                top: 50%;
+            }
+            
+            2.5%{
+                top: 150%;
+            }
+        }
+        
+    <!-- div2 -->
+        
+        #div2 {
+            width: 100vw;
+            height: 100vh;
+            z-index: ;
+        }
+        
+        #line{
+            position: absolute;
+            top: 70%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+        }
+        
+        #line2{
+            position: absolute;
+            top: 68%;
+            left: 66%;
+        }
+        
+        #div2 img{
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+    <!-- div3 -->
+        
+        #div3 {
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+        
+        #div3 img{
+            width: 225px;
+            height: 350px;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        #div3 #hh{
+            position: absolute;
+            top: 75vh;
+            left: 20px;
+            animation: surprise 180s 0s linear infinite;
+        }
+        
+        /* Animation for surprise */
+        
+        @keyframes surprise{
+            
+            0%{
+                top: 150%;
+            }
+            
+            1%{
+                top: 75vh;
+            }
+            
+            100%{
+                top: 75vh;
+            }
+            
+        }
+        
+        #div3 #hhh{
+            position: absolute;
+            top: 85vh;
+            left: 50%;
+            animation: click 180s 0s linear infinite;
+        }
+        
+        /* Animation for click me */
+        
+        @keyframes click{
+            
+            0%{
+                left: 150%;
+            }
+            
+            1%{
+                left: 50%;
+            }
+            
+        }
+        
+        #div3 a{
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <h2 id="h2">Happy</h2>
+        <h2 id="h22">Birthday</h2>
+        <h2 id="h222">Darling...💖</h2>
+    </div>
+    
+    <div id="div2">
+        <img src="Surprise.gif" alt="">
+        <h2 id="line">I have surprise for</h2>
+        <h2 id="line2">you...🤗</h2>
+    </div>
+    
+    <div id="div3">
+        
+        <img src="Bhai Ka Birthday2.gif" alt="">
+        
+        <h2 id="hh">let's click one...👇</h2>
+        
+        <h2 id="hhh"><a href="cake.html">click me</a></h2>
+    </div>
+
+    <script>
+        const divs = [document.getElementById('div1'), document.getElementById('div2'), document.getElementById('div3')];
+        let currentIndex = 0;
+
+        function showDiv(index) {
+            // Hide all divs
+            divs.forEach(div => div.style.display = 'none');
+            // Show the current div
+            divs[index].style.display = 'block';
+        }
+
+        function startSequence() {
+            showDiv(currentIndex);
+            currentIndex++;
+            if (currentIndex < divs.length) {
+                setTimeout(startSequence, 5000); // Show next div after 5 seconds
+            }
+        }
+
+        // Start the sequence
+        startSequence();
+    </script>
+</body>
+</html>

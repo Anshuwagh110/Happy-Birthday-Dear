@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: black;
+            color: white;
+        }
+        
+        /* plate for cake */
+        
+        #plate{
+            width: 250px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* cake first layer */
+        
+        #layer1{
+            background: #ff7fdd;
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 67%;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(255, 0, 255, 1);
+            transform: translate(-50%, -50%);
+        }
+        
+        #layer1:before{
+            content: "";
+            background: #ff7fdd;
+            width: 200px;
+            height: 50px;
+            position: absolute;
+            left: 0%;
+            top: 0%;
+        }
+        
+        /* cake first layer uper circle */
+        
+        #layer11{
+            background: #ff7fdd;
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 60%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid black;
+            z-index: 1;
+        }
+        
+        /* cake second layer */
+        
+        #layer2{
+            background: #ff7fdd;
+            width: 150px;
+            height: 50px;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid black;
+            z-index: 1;
+        }
+        
+        #layer2:before{
+            content: "";
+            width: 150px;
+            height: 60px;
+            background: #ff7fdd;
+            position: absolute;
+            top: -36px;
+            left: -0.5px;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+        }
+        
+        #layer2:after{
+            content:"";
+            width: 150px;
+            height: 50px;
+            background: #ff7fdd;
+            position: absolute;
+            top: -60px;
+            left: -0.5px;
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+        
+        /* Animation for fire */
+        
+        @keyframes fireflamee{
+            0%{
+                background-image: url("fire-flame.gif");
+                width: 0px;
+                height: 0px;
+                opacity: 0;
+                
+            }
+            
+            3%{
+                background-image: url("fire-flame.gif");
+                width: 18px;
+                height: 18px;
+                opacity: 1;
+            }
+            
+            100%{
+                background-image: url("fire-flame.gif");
+                opacity: 1;
+                
+            }
+        }
+        
+        /* candel1 */
+        
+        /* Animation for candel1 */
+        
+        @keyframes candelA1{
+            0%{
+                top: 5%;
+                left: 1%;
+            }
+            
+            2%{
+                top: 5%;
+                left: 33%;
+            }
+            
+            4%{
+                top: 49%;
+                left: 33%;
+            }
+            
+            100%{
+                top: 49%;
+                left: 33%;
+            }
+        }
+        
+        #candel1{
+            background: white;
+            width: 3px;
+            height: 25px;
+            position: absolute;
+            top: 5%;
+            left: 1%;
+            z-index: 1;
+            animation: candelA1 120s 13s linear infinite;
+        }
+        
+        #candelline1{
+            background: white;
+            width: .5px;
+            height: 5px;
+            position: absolute;
+            top: -5px;
+            left: 1px;
+        }
+        
+        #fire1{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            background-size: cover;
+            animation: fireflamee 120s 19s linear infinite;
+        }
+        
+        /* candel2 */
+        
+        /* Animation for candel2 */
+        
+        @keyframes candelA2{
+            0%{
+                width: 3px;
+                height: 25px;
+                transform: scaleY(0);
+            }
+            100%{
+                width: 3px;
+                height: 25px;
+                transform: scaleY(1);
+            }
+        }
+        
+        #candel2{
+            background: white;
+            width: px;
+            height: px;
+            position: absolute;
+            top: 51%;
+            left: 45%;
+            z-index: 2;
+            animation: candelA2 2s forwards; 
+            animation-delay: 18s;
+            transform-origin: bottom;
+        }
+        
+        /* Animation for candel2 line */
+        
+        @keyframes candelL2{
+            0%{
+                width: .5px;
+                height: 5px;
+                transform: scaleY(0);
+            }
+            100%{
+                width: .5px;
+                height: 5px;
+                transform: scaleY(1);
+            }
+        }
+        
+        #candelline2{
+            background: white;
+            width: px;
+            height: px;
+            position: absolute;
+            top: -5px;
+            left: 1px;
+            animation: candelL2 2s forwards; 
+            animation-delay: 18s;
+            transform-origin: bottom;
+        }
+        
+        #fire2{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            background-size: cover;
+            animation: fireflamee 120s 21.5s linear infinite;
+        }
+        
+        /* candel3 */
+        
+        /* Animation for candel3 */
+        
+        @keyframes candelA3{
+            0%{
+                width: 3px;
+                height: 25px;
+                transform: scaleY(0);
+            }
+            100%{
+                width: 3px;
+                height: 25px;
+                transform: scaleY(1);
+            }
+        }
+        
+        #candel3{
+            background: white;
+            width: px;
+            height: px;
+            position: absolute;
+            top: 51%;
+            left: 58%;
+            z-index: 2;
+            animation: candelA3 2s forwards; 
+            animation-delay: 18s;
+            transform-origin: bottom;
+        }
+        
+        /* Animation for candel3 line */
+        
+        @keyframes candelL3{
+            0%{
+                width: .5px;
+                height: 5px;
+                transform: scaleY(0);
+            }
+            100%{
+                width: .5px;
+                height: 5px;
+                transform: scaleY(1);
+            }
+        }
+        
+        #candelline3{
+            background: white;
+            width: px;
+            height: px;
+            position: absolute;
+            top: -5px;
+            left: 1px;
+            animation: candelL3 2s forwards; 
+            animation-delay: 19s;
+            transform-origin: bottom;
+        }
+        
+        #fire3{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            background-size: cover;
+            animation: fireflamee 120s 24s linear infinite;
+        }
+        
+        /* candel4 */
+        
+        /* Animation for candel4 */
+        
+        @keyframes candelA4{
+            0%{
+                top: 5%;
+                left: 98%;
+            }
+            
+            2%{
+                top: 5%;
+                left: 67%;
+            }
+            
+            4%{
+                top: 49%;
+                left: 67%;
+            }
+            
+            100%{
+                top: 49%;
+                left: 67%;
+            }
+        }
+        
+        #candel4{
+            background: white;
+            width: 3px;
+            height: 25px;
+            position: absolute;
+            top: 5%;
+            left: 98%;
+            z-index: 1;
+            animation: candelA4 120s 13s linear infinite;
+        }
+        
+        #candelline4{
+            background: white;
+            width: .5px;
+            height: 5px;
+            position: absolute;
+            top: -5px;
+            left: 1px;
+            z-index: 1;
+        }
+        
+        #fire4{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            background-size: cover;
+            animation: fireflamee 120s 26.5s linear infinite;
+        }
+        
+        /* candel5 */
+        
+        /* Animation for candel5 */
+        
+        @keyframes candelA5{
+            0%{
+                top: 94%;
+                left: 1%;
+            }
+            
+            2%{
+                top: 5%;
+                left: 59%;
+            }
+            
+            4%{
+                top: 47%;
+                left: 59%;
+            }
+            
+            100%{
+                top: 47%;
+                left: 59%;
+            }
+        }
+        
+        #candel5{
+            background: white;
+            width: 3px;
+            height: 25px;
+            position: absolute;
+            top: 94%;
+            left: 1%;
+            z-index: 1;
+            animation: candelA5 120s 13s linear infinite;
+        }
+        
+        #candelline5{
+            background: white;
+            width: .5px;
+            height: 5px;
+            position: absolute;
+            top: -5px;
+            left: 1px;
+        }
+        
+        #fire5{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            background-size: cover;
+            animation: fireflamee 120s 29s linear infinite;
+        }
+        
+        /* candel6 */
+        
+        /* Animation for candel6 */
+        
+        @keyframes candelA6{
+            0%{
+                top: 94%;
+                left: 98%;
+            }
+            
+            2%{
+                top: 5%;
+                left: 46%;
+            }
+            
+            4%{
+                top: 47%;
+                left: 46%;
+            }
+            
+            100%{
+                top: 47%;
+                left: 46%;
+            }
+        }
+        
+        #candel6{
+            background: white;
+            width: 3px;
+            height: 25px;
+            position: absolute;
+            top: 94%;
+            left: 98%;
+            z-index: 1;
+            animation: candelA6 120s 13s linear infinite;
+        }
+        
+        #candelline6{
+            background: white;
+            width: .5px;
+            height: 5px;
+            position: absolute;
+            top: -5px;
+            left: 1px;
+        }
+        
+        #fire6{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            background-size: cover;
+            animation: fireflamee 120s 31.5s linear infinite;
+        }
+        
+        /* Font for cake name */
+        
+        @font-face{
+            font-family: anshu;
+            src: url("SCRIPTIN.ttf");
+        }
+        
+        /* Animation for cake name */
+        
+        @keyframes show-text{
+            0%{
+                width: 0;
+                opacity: 0;
+            }
+            
+            100%{
+                width: 30%;
+                opacity: 1;
+            }
+        }
+        
+        #name{
+            font-family: anshu;
+            font-size: 30px;
+            font-weight: bold;
+            -webkit-text-stroke-width: .7px; 
+            -webkit-text-stroke-color: black;
+            position: absolute;
+            top: 57%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+            z-index: 1;    
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+            animation: show-text 5s forwards;
+            animation-delay: 34s;
+        }
+        
+        /* button for change background */
+        
+        @keyframes btn{
+            0%{
+               width: 0;
+               height: 0;
+               border-radius: 0;
+               font-weight: 200;
+            }
+            
+            2%{
+                width: 80px;
+                height: 30px;
+            }
+            
+            3%{
+                background: white;
+            }
+            
+            4%{
+                border: 1px solid black;
+            }
+            
+            5%{
+                border-radius: 5px;
+            }
+            
+            10%{
+                font-weight: bold;
+            }
+            
+            100%{
+                width: 80px;
+                height: 30px;
+            }
+        }
+        
+        #button{
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: none;
+            animation: btn 120s 38s linear infinite;
+        }
+        
+        /* happy birthday wish */
+        
+        #h2{
+            display: none;
+            position: absolute;
+            left: 13%;
+            top: 10%;
+        }
+        
+        /* timer */
+        
+        #timer{
+            display: none;
+            font-weight: bold;
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+        }
+        
+        /* Animation for Background Party Popper */
+        
+        @keyframes anshu{
+            0%{
+                background-image: url("Celebration1.gif");
+                opacity: 1;
+            }
+            
+            100%{
+                background-image: url("Celebration1.gif");
+               
+                opacity: 1;
+            }
+        }
+        
+        #image{
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            background-size: cover;
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            animation: anshu 7s 0s linear 1;
+        }
+        
+        /* cake decoration  */
+        
+        /* Animation for circle1 */
+        
+        @keyframes circleA1{
+            0%{
+                width: 0;
+                height: 0;
+            }
+            
+            4%{
+                width: 180px;
+                height: 80px;
+            }
+            
+            100%{
+                width: 180px;
+                height: 80px;
+            }
+        }
+        
+        #circle1{
+            width: 0px;
+            height: 0px;
+            border: 1px solid white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 1);
+            border-radius: 50%;
+            position: absolute;
+            top: 59.5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: circleA1 120s 8s linear infinite;
+        }
+        
+        /* Animation for circle2 */
+        
+        @keyframes circleA2{
+            0%{
+                top: 0%;
+                left: 100%;
+                width: 0px;
+                height: 0px;
+            }
+            
+            2%{
+                top: 20%;
+                left: 8%;
+                width: 50px;
+                height: 12.5px;
+            }
+            
+            4%{
+                top: 40%;
+                left: 85%;
+                width: 100px;
+                height: 25px;
+            }
+            
+            6%{
+                top: 50%;
+                left: 28%;
+                width: 200px;
+                height: 50px;
+            }
+            
+            8%{
+                top: 61%;
+                left: 50%;
+                width: 200px;
+                height: 120px;
+            }
+            
+            10%{
+                top: 61%;
+                left: 50%;
+            }
+            
+            100%{
+                top: 61%;
+                left: 50%;
+                width: 200px;
+                height: 120px;
+            }
+        }
+        
+        
+        #circle2{
+            width: 0px;
+            height: 0px;
+            border: 1px solid white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 1);
+            border-radius: 50%;
+           position: absolute;
+           left: 100%;
+           top: 0%;
+           transform: translate(-50%, -50%);
+           animation: circleA2 120s 1s linear infinite;
+        }
+        
+        /* Animation for circle3 */
+        
+        @keyframes circleA3{
+            0%{
+                top: 0%;
+                left: 0%;
+                width: 0px;
+                height: 0px;
+            }
+            
+            2%{
+                top: 20%;
+                left: 92%;
+                width: 50px;
+                height: 12.5px;
+            }
+            
+            4%{
+                top: 40%;
+                left: 14%;
+                width: 100px;
+                height: 25px;
+            }
+            
+            6%{
+                top: 50%;
+                left: 71%;
+                width: 200px;
+                height: 50px;
+            }
+            
+            8%{
+                top: 71%;
+                left: 50%;
+            }
+            
+            100%{
+                top: 71%;
+                left: 50%;
+                width: 200px;
+                height: 50px;
+            }
+        }
+        
+        #circle3{
+            width: 0px;
+            height: 0px;
+            border: 1px solid white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 1);
+           border-radius: 50%;
+           position: absolute;
+           left: 0%;
+           top: 0%;
+           transform: translate(-50%, -50%);
+           animation: circleA3 120s 1s linear infinite;
+        }
+        
+        
+        
+    </style>
+</head>
+<body>
+    <div id="image">
+        
+    </div>
+    
+    <h2 id="h2">Happy Happy Happy...💖</h2>
+    
+    <div id="plate">
+       
+    </div>
+    <div id="layer11">
+        
+    </div>
+    <div id="layer1">
+            
+    </div>
+    <div id="circle1">
+        
+    </div>    
+    <div id="circle2">
+        
+    </div>
+    <div id="circle3">
+        
+    </div>
+    <div id="layer2">
+        
+    </div>
+
+    
+    
+    <!-- candel 1 -->
+    
+    <div id="candel1">
+        <div id="candelline1"></div>
+        <div id="fire1"></div>
+    </div>
+    
+    <!-- candel 2 -->
+    
+    <div id="candel2">
+        <div id="candelline2"></div>
+        <div id="fire2"></div>
+    </div>
+    
+    <!-- candel 3 -->
+    
+    <div id="candel3">
+        <div id="candelline3"></div>
+        <div id="fire3"></div>
+    </div>
+    
+    <!-- candel 4 -->
+    
+    <div id="candel4">
+        <div id="candelline4"></div>
+        <div id="fire4"></div>
+    </div>
+    
+    <!-- candel 5 -->
+    
+    <div id="candel5">
+        <div id="candelline5"></div>
+        <div id="fire5"></div>
+    </div>
+    
+    <!-- candel 5 -->
+    
+    <div id="candel6">
+        <div id="candelline6"></div>
+        <div id="fire6"></div>
+    </div>
+    
+    <p id="name">Harshu</p>
+    
+    <button id="button" onclick="anshu ()">Click Me</button>
+    
+    
+    <p id="timer"></p>
+    
+    
+    <script>
+        /* After click button */
+        
+        function anshu() {
+            document.getElementById("image").style.display="block";
+      document.getElementById("h2").style.display="block";
+      document.getElementById("timer").style.display="block";
+      document.getElementById("button").style.display="none";
+      document.getElementById("fire1").style.display="none";
+       document.getElementById("fire2").style.display="none";
+      document.getElementById("fire3").style.display="none";
+      document.getElementById("fire4").style.display="none";
+      document.getElementById("fire5").style.display="none";
+      document.getElementById("fire6").style.display="none";
+      
+        }
+
+
+
+       /* Timer */
+
+    // Set the start date
+    const startDate = new Date('2007-11-29T00:00:00.000+05:30').getTime();
+    
+    // Get the current date
+    const currentDate = new Date().getTime();
+
+    // Function to format the date difference
+    function formatDuration(duration) {
+      const years = Math.floor(duration / (1000 * 60 * 60 * 24 * 365));
+      const months = Math.floor((duration % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+      const days = Math.floor((duration % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((duration % (1000 * 60)) / 1000);
+
+      return `${years} years, ${months} months, ${days} days, ${hours} hours<br>${minutes} minutes, ${seconds} seconds.`;
+    }
+
+    
+
+    // Calculate the difference between the two dates
+    const difference = currentDate - startDate;
+
+    // Display the timer
+    document.getElementById("timer").innerHTML = `Timer: ${formatDuration(difference)}`;
+
+    // Update the timer every second
+    setInterval(() => {
+      const currentDate = new Date();
+      const difference = currentDate - startDate;
+      document.getElementById("timer").innerHTML = `${formatDuration(difference)}`;
+    }, 1000);
+    
+    
+    
+          /* cake name */
+        document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector("name");
+    });
+
+
+    </script>
+</body>
+</html>
